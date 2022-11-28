@@ -1,0 +1,69 @@
+dataset: diabetic
+
+model: podnet
+convnet: resnet18
+
+sampler: balance
+
+fixed_memory: true
+memory_size: 100
+
+eval_type: cnn
+eval_kappa: True
+
+convnet_config:
+  last_relu: True
+  pretrained: True
+  nf: 64
+  initial_kernel: 7
+  
+classifier_config:
+  type: cosine
+  proxy_per_class: 10
+  distance: cosine
+
+postprocessor_config:
+  type: learned_scaling
+  initial_value: 1.0
+
+pod_flat:
+  scheduled_factor: 1.0
+
+pod_spatial:
+  scheduled_factor: 3.0
+  collapse_channels: spatial
+
+nca:
+  margin: 0.0
+  scale: 1.
+  exclude_pos_denominator: True
+  hinge_proxynca: True
+  
+groupwise_factors:
+  old_weights: 0.0
+  convnet: 0.1
+  
+finetuning_config:
+  sampling: undersampling
+  tuning: classifier_scale
+  lr: 0.05
+  epochs: 20
+  scaling: null
+
+# Cosine Scheduling (CS)
+scheduling: cosine
+
+# Misc
+epochs: 150
+lr: 0.1
+lr_decay: 0.1
+optimizer: sgd
+proxy_per_class: 1
+weight_decay: 0.0005
+
+weight_generation:
+  type: imprinted
+  multi_class_diff: kmeans
+
+no_progressbar: True
+

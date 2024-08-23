@@ -1,0 +1,158 @@
+{
+  "config": {
+    "model": "icarl",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 100,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "diabetic",
+    "increment": 1,
+    "batch_size": 128,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/diabetic",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": [
+      50,
+      100
+    ],
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 150,
+    "label": "icarl_diabetic_3steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/icarl/icarl_diabetic.yaml",
+      "options/data/diabetic_3orders.yaml"
+    ],
+    "save_model": "never",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_kappa": true,
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "initial_value": 1.0,
+      "type": "learned_scaling"
+    },
+    "classification_loss": {
+      "type": "ce"
+    },
+    "groupwise_factors": {
+      "convnet": [
+        0.1,
+        0.01
+      ]
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        4,
+        0,
+        1,
+        2,
+        3
+      ]
+    ]
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.888,
+        "00-00": 0.803,
+        "01-01": 0.953,
+        "02-02": 0.233
+      },
+      "incremental_accuracy": 0.888,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.888,
+        "00-00": 0.803,
+        "01-01": 0.953,
+        "02-02": 0.233
+      },
+      "cord": 0.6630859375,
+      "kappa": 0.39
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.562,
+        "00-00": 0.605,
+        "01-01": 0.601,
+        "02-02": 0.121,
+        "03-03": 0.572
+      },
+      "incremental_accuracy": 0.7250000000000001,
+      "forgetting": 0.030000000000000027,
+      "accuracy_per_class": {
+        "total": 0.562,
+        "00-00": 0.605,
+        "01-01": 0.601,
+        "02-02": 0.121,
+        "03-03": 0.572
+      },
+      "cord": 0.5576171875,
+      "kappa": 0.154,
+      "old_accuracy": 0.561,
+      "new_accuracy": 0.572,
+      "avg_old_accuracy": 0.561,
+      "avg_new_accuracy": 0.572
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.402,
+        "00-00": 0.163,
+        "01-01": 0.483,
+        "02-02": 0.078,
+        "03-03": 0.109,
+        "04-04": 0.908
+      },
+      "incremental_accuracy": 0.6173333333333334,
+      "forgetting": 0.20499999999999993,
+      "accuracy_per_class": {
+        "total": 0.402,
+        "00-00": 0.163,
+        "01-01": 0.483,
+        "02-02": 0.078,
+        "03-03": 0.109,
+        "04-04": 0.908
+      },
+      "cord": 0.51904296875,
+      "kappa": 0.151,
+      "old_accuracy": 0.39,
+      "new_accuracy": 0.908,
+      "avg_old_accuracy": 0.47550000000000003,
+      "avg_new_accuracy": 0.74
+    }
+  ]
+}

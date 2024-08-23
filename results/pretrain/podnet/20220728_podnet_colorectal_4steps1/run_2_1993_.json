@@ -1,0 +1,265 @@
+{
+  "config": {
+    "model": "podnet",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 160,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "colorectal",
+    "increment": 1,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 4,
+    "sampler": null,
+    "data_path": "/home/evelynyi/continual_learning/incremental_learning.pytorch/data/colorectal",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": "cosine",
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "podnet_colorectal_4steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/podnet/podnet_cnn_colorectal.yaml",
+      "options/data/colorectal_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "type": "cosine",
+      "proxy_per_class": 10,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "type": "learned_scaling",
+      "initial_value": 1.0
+    },
+    "pod_flat": {
+      "scheduled_factor": 8.0
+    },
+    "pod_spatial": {
+      "scheduled_factor": 5.0,
+      "collapse_channels": "spatial"
+    },
+    "nca": {
+      "margin": 0.0,
+      "scale": 1.0,
+      "exclude_pos_denominator": true,
+      "hinge_proxynca": true
+    },
+    "groupwise_factors": {
+      "old_weights": 0.0,
+      "convnet": [
+        0.1,
+        0.01
+      ]
+    },
+    "finetuning_config": {
+      "sampling": "undersampling",
+      "tuning": "classifier",
+      "lr": 0.01,
+      "epochs": 20,
+      "scaling": null
+    },
+    "proxy_per_class": 1,
+    "weight_generation": {
+      "type": "imprinted",
+      "multi_class_diff": "kmeans"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        1,
+        4,
+        5,
+        7,
+        2,
+        3,
+        6,
+        0
+      ]
+    ],
+    "_logs": {}
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.992,
+        "00-00": 0.976,
+        "01-01": 1.0,
+        "02-02": 0.992,
+        "03-03": 1.0
+      },
+      "incremental_accuracy": 0.992,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.992,
+        "00-00": 0.976,
+        "01-01": 1.0,
+        "02-02": 0.992,
+        "03-03": 1.0
+      },
+      "cord": 0.9921875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.93,
+        "00-00": 0.88,
+        "01-01": 0.952,
+        "02-02": 0.968,
+        "03-03": 1.0,
+        "04-04": 0.848
+      },
+      "incremental_accuracy": 0.9610000000000001,
+      "forgetting": -0.16999999999999998,
+      "accuracy_per_class": {
+        "total": 0.93,
+        "00-00": 0.88,
+        "01-01": 0.952,
+        "02-02": 0.968,
+        "03-03": 1.0,
+        "04-04": 0.848
+      },
+      "cord": 0.9462890625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.95,
+      "new_accuracy": 0.848,
+      "avg_old_accuracy": 0.95,
+      "avg_new_accuracy": 0.848
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.871,
+        "00-00": 0.736,
+        "01-01": 0.904,
+        "02-02": 0.904,
+        "03-03": 1.0,
+        "04-04": 0.8,
+        "05-05": 0.88
+      },
+      "incremental_accuracy": 0.931,
+      "forgetting": -0.08160000000000003,
+      "accuracy_per_class": {
+        "total": 0.871,
+        "00-00": 0.736,
+        "01-01": 0.904,
+        "02-02": 0.904,
+        "03-03": 1.0,
+        "04-04": 0.8,
+        "05-05": 0.88
+      },
+      "cord": 0.91259765625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.869,
+      "new_accuracy": 0.88,
+      "avg_old_accuracy": 0.9095,
+      "avg_new_accuracy": 0.864
+    },
+    {
+      "task_id": 3,
+      "accuracy": {
+        "total": 0.864,
+        "00-00": 0.744,
+        "01-01": 0.872,
+        "02-02": 0.872,
+        "03-03": 0.984,
+        "04-04": 0.816,
+        "05-05": 0.896,
+        "06-06": 0.864
+      },
+      "incremental_accuracy": 0.91425,
+      "forgetting": -0.058666666666666666,
+      "accuracy_per_class": {
+        "total": 0.864,
+        "00-00": 0.744,
+        "01-01": 0.872,
+        "02-02": 0.872,
+        "03-03": 0.984,
+        "04-04": 0.816,
+        "05-05": 0.896,
+        "06-06": 0.864
+      },
+      "cord": 0.8955078125,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.864,
+      "new_accuracy": 0.864,
+      "avg_old_accuracy": 0.8943333333333333,
+      "avg_new_accuracy": 0.864
+    },
+    {
+      "task_id": 4,
+      "accuracy": {
+        "total": 0.828,
+        "00-00": 0.672,
+        "01-01": 0.84,
+        "02-02": 0.768,
+        "03-03": 0.984,
+        "04-04": 0.792,
+        "05-05": 0.888,
+        "06-06": 0.84,
+        "07-07": 0.84
+      },
+      "incremental_accuracy": 0.897,
+      "forgetting": -0.006857142857142863,
+      "accuracy_per_class": {
+        "total": 0.828,
+        "00-00": 0.672,
+        "01-01": 0.84,
+        "02-02": 0.768,
+        "03-03": 0.984,
+        "04-04": 0.792,
+        "05-05": 0.888,
+        "06-06": 0.84,
+        "07-07": 0.84
+      },
+      "cord": 0.87548828125,
+      "accuracy_top5": {
+        "total": 0.998
+      },
+      "incremental_accuracy_top5": 0.9996,
+      "old_accuracy": 0.826,
+      "new_accuracy": 0.84,
+      "avg_old_accuracy": 0.87725,
+      "avg_new_accuracy": 0.858
+    }
+  ]
+}

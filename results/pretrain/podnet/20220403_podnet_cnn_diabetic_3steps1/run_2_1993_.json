@@ -1,0 +1,175 @@
+{
+  "config": {
+    "model": "podnet",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 100,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "diabetic",
+    "increment": 1,
+    "batch_size": 128,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/diabetic",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": "cosine",
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 150,
+    "label": "podnet_cnn_diabetic_3steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/podnet/podnet_cnn_diabetic.yaml",
+      "options/data/diabetic_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "eval_kappa": true,
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "type": "cosine",
+      "proxy_per_class": 10,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "type": "learned_scaling",
+      "initial_value": 1.0
+    },
+    "pod_flat": {
+      "scheduled_factor": 1.0
+    },
+    "pod_spatial": {
+      "scheduled_factor": 3.0,
+      "collapse_channels": "spatial"
+    },
+    "nca": {
+      "margin": 0.0,
+      "scale": 1.0,
+      "exclude_pos_denominator": true,
+      "hinge_proxynca": true
+    },
+    "groupwise_factors": {
+      "old_weights": 0.0,
+      "convnet": 0.1
+    },
+    "finetuning_config": {
+      "sampling": "undersampling",
+      "tuning": "classifier_scale",
+      "lr": 0.05,
+      "epochs": 20,
+      "scaling": null
+    },
+    "proxy_per_class": 1,
+    "weight_generation": {
+      "type": "imprinted",
+      "multi_class_diff": "kmeans"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        4,
+        0,
+        1,
+        2,
+        3
+      ]
+    ],
+    "_logs": {}
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.9,
+        "00-00": 0.769,
+        "01-01": 0.974,
+        "02-02": 0.168
+      },
+      "incremental_accuracy": 0.9,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.9,
+        "00-00": 0.769,
+        "01-01": 0.974,
+        "02-02": 0.168
+      },
+      "cord": 0.63720703125,
+      "kappa": 0.385
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.39,
+        "00-00": 0.432,
+        "01-01": 0.329,
+        "02-02": 0.007,
+        "03-03": 0.878
+      },
+      "incremental_accuracy": 0.645,
+      "forgetting": 0.08833333333333333,
+      "accuracy_per_class": {
+        "total": 0.39,
+        "00-00": 0.432,
+        "01-01": 0.329,
+        "02-02": 0.007,
+        "03-03": 0.878
+      },
+      "cord": 0.55419921875,
+      "kappa": 0.101,
+      "old_accuracy": 0.304,
+      "new_accuracy": 0.878,
+      "avg_old_accuracy": 0.304,
+      "avg_new_accuracy": 0.878
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.502,
+        "00-00": 0.102,
+        "01-01": 0.578,
+        "02-02": 0.031,
+        "03-03": 0.34,
+        "04-04": 0.907
+      },
+      "incremental_accuracy": 0.5973333333333334,
+      "forgetting": 0.20775000000000005,
+      "accuracy_per_class": {
+        "total": 0.502,
+        "00-00": 0.102,
+        "01-01": 0.578,
+        "02-02": 0.031,
+        "03-03": 0.34,
+        "04-04": 0.907
+      },
+      "cord": 0.529296875,
+      "kappa": 0.268,
+      "old_accuracy": 0.492,
+      "new_accuracy": 0.907,
+      "avg_old_accuracy": 0.398,
+      "avg_new_accuracy": 0.8925000000000001
+    }
+  ]
+}

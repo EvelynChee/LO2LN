@@ -1,0 +1,188 @@
+{
+  "config": {
+    "model": "podnet",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 140,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "ham10000",
+    "increment": 2,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/ham10000",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": "cosine",
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "podnet_ham10000_3steps2",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/podnet/podnet_cnn_ham10000.yaml",
+      "options/data/ham10000_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "type": "cosine",
+      "proxy_per_class": 10,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "type": "learned_scaling",
+      "initial_value": 1.0
+    },
+    "pod_flat": {
+      "scheduled_factor": 8.0
+    },
+    "pod_spatial": {
+      "scheduled_factor": 5.0,
+      "collapse_channels": "spatial"
+    },
+    "nca": {
+      "margin": 0.0,
+      "scale": 1.0,
+      "exclude_pos_denominator": true,
+      "hinge_proxynca": true
+    },
+    "groupwise_factors": {
+      "old_weights": 0.0,
+      "convnet": [
+        0.1,
+        0.01
+      ]
+    },
+    "finetuning_config": {
+      "sampling": "undersampling",
+      "tuning": "classifier",
+      "lr": 0.01,
+      "epochs": 20,
+      "scaling": null
+    },
+    "proxy_per_class": 1,
+    "weight_generation": {
+      "type": "imprinted",
+      "multi_class_diff": "kmeans"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        5,
+        4,
+        0,
+        1,
+        3,
+        6,
+        2
+      ]
+    ],
+    "_logs": {}
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.882,
+        "00-01": 0.873,
+        "02-03": 0.892
+      },
+      "incremental_accuracy": 0.882,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.882,
+        "00-00": 0.81,
+        "01-01": 0.879,
+        "02-02": 0.892
+      },
+      "cord": 0.8603515625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.778,
+        "00-01": 0.433,
+        "02-03": 0.829,
+        "04-05": 0.846
+      },
+      "incremental_accuracy": 0.8300000000000001,
+      "forgetting": -0.08574999999999997,
+      "accuracy_per_class": {
+        "total": 0.778,
+        "00-00": 0.571,
+        "01-01": 0.42,
+        "02-02": 0.396,
+        "03-03": 0.898,
+        "04-04": 0.846
+      },
+      "cord": 0.74560546875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.416,
+      "new_accuracy": 0.896,
+      "avg_old_accuracy": 0.416,
+      "avg_new_accuracy": 0.896
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.637,
+        "00-01": 0.367,
+        "02-03": 0.666,
+        "04-05": 0.591,
+        "06-07": 0.845
+      },
+      "incremental_accuracy": 0.7656666666666667,
+      "forgetting": 0.0284,
+      "accuracy_per_class": {
+        "total": 0.637,
+        "00-00": 0.524,
+        "01-01": 0.353,
+        "02-02": 0.321,
+        "03-03": 0.721,
+        "04-04": 0.446,
+        "05-05": 1.0,
+        "06-06": 0.845
+      },
+      "cord": 0.71728515625,
+      "accuracy_top5": {
+        "total": 0.97
+      },
+      "incremental_accuracy_top5": 0.9899999999999999,
+      "old_accuracy": 0.619,
+      "new_accuracy": 0.871,
+      "avg_old_accuracy": 0.5175,
+      "avg_new_accuracy": 0.8835
+    }
+  ]
+}

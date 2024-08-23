@@ -1,0 +1,169 @@
+{
+  "config": {
+    "model": "icarl",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 160,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "colorectal",
+    "increment": 2,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 4,
+    "sampler": null,
+    "data_path": "/home/evelynyi/continual_learning/incremental_learning.pytorch/data/colorectal",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": [
+      40,
+      80
+    ],
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "icarl_colorectal_4steps2",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/icarl/icarl_colorectal.yaml",
+      "options/data/colorectal_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "initial_value": 1.0,
+      "type": "learned_scaling"
+    },
+    "classification_loss": {
+      "type": "ce"
+    },
+    "groupwise_factors": {
+      "convnet": 0.01
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        2,
+        3,
+        0,
+        4,
+        5,
+        6,
+        7,
+        1
+      ]
+    ]
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.976,
+        "00-01": 0.96,
+        "02-03": 0.992
+      },
+      "incremental_accuracy": 0.976,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.976,
+        "00-00": 0.968,
+        "01-01": 0.952,
+        "02-02": 0.984,
+        "03-03": 1.0
+      },
+      "cord": 0.97607421875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.944,
+        "00-01": 0.936,
+        "02-03": 0.912,
+        "04-05": 0.984
+      },
+      "incremental_accuracy": 0.96,
+      "forgetting": -0.44000000000000006,
+      "accuracy_per_class": {
+        "total": 0.944,
+        "00-00": 0.936,
+        "01-01": 0.936,
+        "02-02": 0.92,
+        "03-03": 0.904,
+        "04-04": 0.968,
+        "05-05": 1.0
+      },
+      "cord": 0.96142578125,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.924,
+      "new_accuracy": 0.984,
+      "avg_old_accuracy": 0.924,
+      "avg_new_accuracy": 0.984
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.874,
+        "00-01": 0.728,
+        "02-03": 0.868,
+        "04-05": 0.924,
+        "06-07": 0.976
+      },
+      "incremental_accuracy": 0.9313333333333333,
+      "forgetting": -0.18666666666666668,
+      "accuracy_per_class": {
+        "total": 0.874,
+        "00-00": 0.544,
+        "01-01": 0.912,
+        "02-02": 0.952,
+        "03-03": 0.784,
+        "04-04": 0.944,
+        "05-05": 0.904,
+        "06-06": 1.0,
+        "07-07": 0.952
+      },
+      "cord": 0.93212890625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.84,
+      "new_accuracy": 0.976,
+      "avg_old_accuracy": 0.882,
+      "avg_new_accuracy": 0.98
+    }
+  ]
+}

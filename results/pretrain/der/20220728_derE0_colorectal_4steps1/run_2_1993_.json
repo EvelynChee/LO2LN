@@ -1,0 +1,302 @@
+{
+  "config": {
+    "model": "der",
+    "convnet": "dynaresnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 160,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "colorectal",
+    "increment": 1,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 4,
+    "sampler": null,
+    "data_path": "/home/evelynyi/continual_learning/incremental_learning.pytorch/data/colorectal",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": {
+      "type": "step",
+      "epochs": [
+        40,
+        80
+      ],
+      "gamma": 0.1
+    },
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "derE0_colorectal_4steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/der/derE0_colorectal.yaml",
+      "options/data/colorectal_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7,
+      "shared_features": 0
+    },
+    "reset_classifier": true,
+    "aux_classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "initial_value": 1.0,
+      "type": "learned_scaling"
+    },
+    "classification_loss": {
+      "gamma": 0.0,
+      "beta": 0.0,
+      "start_old": 0,
+      "schedule_old": 0,
+      "gamma_old": 0.5,
+      "beta_old": 0.999
+    },
+    "distillation_loss": {
+      "factor": 0.0,
+      "T": 2.0
+    },
+    "auxillary_loss": {
+      "factor": 1.0,
+      "n+1": true,
+      "gamma": 0.0,
+      "beta": 0.0
+    },
+    "ranking_loss": {
+      "factor": 0.0,
+      "nb_negatives": 2,
+      "margin": 0.4
+    },
+    "finetuning_config": {
+      "tuning": "classifier_scale",
+      "lr": 0.1,
+      "epochs": 30,
+      "temperature": 5.0,
+      "scheduling": {
+        "type": "step",
+        "epochs": [
+          15
+        ],
+        "gamma": 0.1
+      }
+    },
+    "groupwise_factors": {
+      "convnet_new": 0.01,
+      "convnet_old": 0.0
+    },
+    "weight_generation": {
+      "type": "imprinted"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        1,
+        4,
+        5,
+        7,
+        2,
+        3,
+        6,
+        0
+      ]
+    ],
+    "_logs": {
+      "scale": [
+        7.430318355560303,
+        12.048604965209961,
+        13.182086944580078,
+        14.959136962890625,
+        15.873270034790039
+      ]
+    }
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.99,
+        "00-00": 0.968,
+        "01-01": 0.992,
+        "02-02": 1.0,
+        "03-03": 1.0
+      },
+      "incremental_accuracy": 0.99,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.99,
+        "00-00": 0.968,
+        "01-01": 0.992,
+        "02-02": 1.0,
+        "03-03": 1.0
+      },
+      "cord": 0.990234375,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.907,
+        "00-00": 0.688,
+        "01-01": 0.96,
+        "02-02": 0.92,
+        "03-03": 1.0,
+        "04-04": 0.968
+      },
+      "incremental_accuracy": 0.9485,
+      "forgetting": -0.144,
+      "accuracy_per_class": {
+        "total": 0.907,
+        "00-00": 0.688,
+        "01-01": 0.96,
+        "02-02": 0.92,
+        "03-03": 1.0,
+        "04-04": 0.968
+      },
+      "cord": 0.9462890625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.892,
+      "new_accuracy": 0.968,
+      "avg_old_accuracy": 0.892,
+      "avg_new_accuracy": 0.968
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.845,
+        "00-00": 0.552,
+        "01-01": 0.936,
+        "02-02": 0.8,
+        "03-03": 1.0,
+        "04-04": 0.896,
+        "05-05": 0.888
+      },
+      "incremental_accuracy": 0.914,
+      "forgetting": -0.028800000000000048,
+      "accuracy_per_class": {
+        "total": 0.845,
+        "00-00": 0.552,
+        "01-01": 0.936,
+        "02-02": 0.8,
+        "03-03": 1.0,
+        "04-04": 0.896,
+        "05-05": 0.888
+      },
+      "cord": 0.904296875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.837,
+      "new_accuracy": 0.888,
+      "avg_old_accuracy": 0.8645,
+      "avg_new_accuracy": 0.9279999999999999
+    },
+    {
+      "task_id": 3,
+      "accuracy": {
+        "total": 0.889,
+        "00-00": 0.728,
+        "01-01": 0.952,
+        "02-02": 0.864,
+        "03-03": 0.992,
+        "04-04": 0.872,
+        "05-05": 0.88,
+        "06-06": 0.936
+      },
+      "incremental_accuracy": 0.9077500000000001,
+      "forgetting": -0.068,
+      "accuracy_per_class": {
+        "total": 0.889,
+        "00-00": 0.728,
+        "01-01": 0.952,
+        "02-02": 0.864,
+        "03-03": 0.992,
+        "04-04": 0.872,
+        "05-05": 0.88,
+        "06-06": 0.936
+      },
+      "cord": 0.90283203125,
+      "accuracy_top5": {
+        "total": 0.999
+      },
+      "incremental_accuracy_top5": 0.99975,
+      "old_accuracy": 0.881,
+      "new_accuracy": 0.936,
+      "avg_old_accuracy": 0.8700000000000001,
+      "avg_new_accuracy": 0.9306666666666666
+    },
+    {
+      "task_id": 4,
+      "accuracy": {
+        "total": 0.872,
+        "00-00": 0.672,
+        "01-01": 0.952,
+        "02-02": 0.832,
+        "03-03": 0.984,
+        "04-04": 0.768,
+        "05-05": 0.856,
+        "06-06": 0.936,
+        "07-07": 0.976
+      },
+      "incremental_accuracy": 0.9006000000000001,
+      "forgetting": -0.031999999999999994,
+      "accuracy_per_class": {
+        "total": 0.872,
+        "00-00": 0.672,
+        "01-01": 0.952,
+        "02-02": 0.832,
+        "03-03": 0.984,
+        "04-04": 0.768,
+        "05-05": 0.856,
+        "06-06": 0.936,
+        "07-07": 0.976
+      },
+      "cord": 0.90283203125,
+      "accuracy_top5": {
+        "total": 0.999
+      },
+      "incremental_accuracy_top5": 0.9996,
+      "old_accuracy": 0.857,
+      "new_accuracy": 0.976,
+      "avg_old_accuracy": 0.8667500000000001,
+      "avg_new_accuracy": 0.942
+    }
+  ]
+}

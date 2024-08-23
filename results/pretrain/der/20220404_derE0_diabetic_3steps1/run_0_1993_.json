@@ -1,0 +1,226 @@
+{
+  "config": {
+    "model": "der",
+    "convnet": "dynaresnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 100,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "diabetic",
+    "increment": 1,
+    "batch_size": 128,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/diabetic",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": {
+      "type": "step",
+      "epochs": [
+        10,
+        40,
+        80
+      ],
+      "gamma": 0.1
+    },
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 150,
+    "label": "derE0_diabetic_3steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/der/derE0_diabetic.yaml",
+      "options/data/diabetic_1order.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "eval_kappa": true,
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7,
+      "shared_features": 0
+    },
+    "reset_classifier": true,
+    "aux_classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "initial_value": 1.0,
+      "type": "learned_scaling"
+    },
+    "classification_loss": {
+      "gamma": 0.0,
+      "beta": 0.0,
+      "start_old": 0,
+      "schedule_old": 0,
+      "gamma_old": 2.0,
+      "beta_old": 0.999
+    },
+    "distillation_loss": {
+      "factor": 0.0,
+      "T": 2.0
+    },
+    "auxillary_loss": {
+      "factor": 1.0,
+      "n+1": true,
+      "gamma": 0.0,
+      "beta": 0.0
+    },
+    "ranking_loss": {
+      "factor": 0.0,
+      "nb_negatives": 1,
+      "margin": 0.4
+    },
+    "finetuning_config": {
+      "tuning": "classifier_scale",
+      "lr": 0.1,
+      "epochs": 30,
+      "temperature": 5.0,
+      "scheduling": {
+        "type": "step",
+        "epochs": [
+          15
+        ],
+        "gamma": 0.1
+      }
+    },
+    "groupwise_factors": {
+      "convnet_new": [
+        0.1,
+        0.01
+      ],
+      "convnet_old": 0.0
+    },
+    "pretrain_epochs": 150,
+    "pretrain_scheduling": {
+      "type": "step",
+      "epochs": [
+        50,
+        100
+      ],
+      "gamma": 0.1
+    },
+    "weight_generation": {
+      "type": "imprinted"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "_logs": {
+      "scale": [
+        6.931758403778076,
+        7.186929225921631,
+        8.56622314453125
+      ]
+    }
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.84,
+        "00-00": 0.943,
+        "01-01": 0.097,
+        "02-02": 0.68
+      },
+      "incremental_accuracy": 0.84,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.84,
+        "00-00": 0.943,
+        "01-01": 0.097,
+        "02-02": 0.68
+      },
+      "cord": 0.5732421875,
+      "kappa": 0.656
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.748,
+        "00-00": 0.928,
+        "01-01": 0.147,
+        "02-02": 0.114,
+        "03-03": 0.858
+      },
+      "incremental_accuracy": 0.794,
+      "forgetting": -0.06540000000000001,
+      "accuracy_per_class": {
+        "total": 0.748,
+        "00-00": 0.928,
+        "01-01": 0.147,
+        "02-02": 0.114,
+        "03-03": 0.858
+      },
+      "cord": 0.578125,
+      "kappa": 0.687,
+      "old_accuracy": 0.746,
+      "new_accuracy": 0.858,
+      "avg_old_accuracy": 0.746,
+      "avg_new_accuracy": 0.858
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.459,
+        "00-00": 0.569,
+        "01-01": 0.158,
+        "02-02": 0.045,
+        "03-03": 0.0,
+        "04-04": 0.957
+      },
+      "incremental_accuracy": 0.6823333333333333,
+      "forgetting": 0.14983333333333332,
+      "accuracy_per_class": {
+        "total": 0.459,
+        "00-00": 0.569,
+        "01-01": 0.158,
+        "02-02": 0.045,
+        "03-03": 0.0,
+        "04-04": 0.957
+      },
+      "cord": 0.5224609375,
+      "kappa": 0.224,
+      "old_accuracy": 0.448,
+      "new_accuracy": 0.957,
+      "avg_old_accuracy": 0.597,
+      "avg_new_accuracy": 0.9075
+    }
+  ]
+}

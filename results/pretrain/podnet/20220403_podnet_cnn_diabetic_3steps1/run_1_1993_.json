@@ -1,0 +1,175 @@
+{
+  "config": {
+    "model": "podnet",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 100,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "diabetic",
+    "increment": 1,
+    "batch_size": 128,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/diabetic",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": "cosine",
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 150,
+    "label": "podnet_cnn_diabetic_3steps1",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/podnet/podnet_cnn_diabetic.yaml",
+      "options/data/diabetic_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "eval_kappa": true,
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "type": "cosine",
+      "proxy_per_class": 10,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "type": "learned_scaling",
+      "initial_value": 1.0
+    },
+    "pod_flat": {
+      "scheduled_factor": 1.0
+    },
+    "pod_spatial": {
+      "scheduled_factor": 3.0,
+      "collapse_channels": "spatial"
+    },
+    "nca": {
+      "margin": 0.0,
+      "scale": 1.0,
+      "exclude_pos_denominator": true,
+      "hinge_proxynca": true
+    },
+    "groupwise_factors": {
+      "old_weights": 0.0,
+      "convnet": 0.1
+    },
+    "finetuning_config": {
+      "sampling": "undersampling",
+      "tuning": "classifier_scale",
+      "lr": 0.05,
+      "epochs": 20,
+      "scaling": null
+    },
+    "proxy_per_class": 1,
+    "weight_generation": {
+      "type": "imprinted",
+      "multi_class_diff": "kmeans"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        0,
+        2,
+        3,
+        4,
+        1
+      ]
+    ],
+    "_logs": {}
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.902,
+        "00-00": 0.968,
+        "01-01": 0.654,
+        "02-02": 0.36
+      },
+      "incremental_accuracy": 0.902,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.902,
+        "00-00": 0.968,
+        "01-01": 0.654,
+        "02-02": 0.36
+      },
+      "cord": 0.66064453125,
+      "kappa": 0.736
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.733,
+        "00-00": 0.853,
+        "01-01": 0.212,
+        "02-02": 0.111,
+        "03-03": 0.807
+      },
+      "incremental_accuracy": 0.8175,
+      "forgetting": -0.00033333333333333365,
+      "accuracy_per_class": {
+        "total": 0.733,
+        "00-00": 0.853,
+        "01-01": 0.212,
+        "02-02": 0.111,
+        "03-03": 0.807
+      },
+      "cord": 0.5966796875,
+      "kappa": 0.366,
+      "old_accuracy": 0.731,
+      "new_accuracy": 0.807,
+      "avg_old_accuracy": 0.731,
+      "avg_new_accuracy": 0.807
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.185,
+        "00-00": 0.142,
+        "01-01": 0.078,
+        "02-02": 0.067,
+        "03-03": 0.629,
+        "04-04": 0.758
+      },
+      "incremental_accuracy": 0.6066666666666667,
+      "forgetting": 0.27875000000000005,
+      "accuracy_per_class": {
+        "total": 0.185,
+        "00-00": 0.142,
+        "01-01": 0.078,
+        "02-02": 0.067,
+        "03-03": 0.629,
+        "04-04": 0.758
+      },
+      "cord": 0.52490234375,
+      "kappa": -0.001,
+      "old_accuracy": 0.142,
+      "new_accuracy": 0.758,
+      "avg_old_accuracy": 0.4365,
+      "avg_new_accuracy": 0.7825
+    }
+  ]
+}

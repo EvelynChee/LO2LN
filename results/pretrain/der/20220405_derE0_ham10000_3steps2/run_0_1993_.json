@@ -1,0 +1,223 @@
+{
+  "config": {
+    "model": "der",
+    "convnet": "dynaresnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 140,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "ham10000",
+    "increment": 2,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 3,
+    "sampler": "balance",
+    "data_path": "/home/evelynyi/continual_learning/continual_learning/data/ham10000",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": {
+      "type": "step",
+      "epochs": [
+        40,
+        80
+      ],
+      "gamma": 0.1
+    },
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "derE0_ham10000_3steps2",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/der/derE0_ham10000.yaml",
+      "options/data/ham10000_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7,
+      "shared_features": 0
+    },
+    "reset_classifier": true,
+    "aux_classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "classifier_config": {
+      "scaling": 1,
+      "gamma": 1,
+      "type": "cosine",
+      "proxy_per_class": 1,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "initial_value": 1.0,
+      "type": "learned_scaling"
+    },
+    "classification_loss": {
+      "gamma": 0.0,
+      "beta": 0.0,
+      "start_old": 0,
+      "schedule_old": 0,
+      "gamma_old": 0.5,
+      "beta_old": 0.999
+    },
+    "distillation_loss": {
+      "factor": 0.0,
+      "T": 2.0
+    },
+    "auxillary_loss": {
+      "factor": 1.0,
+      "n+1": true,
+      "gamma": 0.0,
+      "beta": 0.0
+    },
+    "ranking_loss": {
+      "factor": 0.0,
+      "nb_negatives": 2,
+      "margin": 0.4
+    },
+    "finetuning_config": {
+      "tuning": "classifier_scale",
+      "lr": 0.1,
+      "epochs": 30,
+      "temperature": 5.0,
+      "scheduling": {
+        "type": "step",
+        "epochs": [
+          15
+        ],
+        "gamma": 0.1
+      }
+    },
+    "groupwise_factors": {
+      "convnet_new": 0.01,
+      "convnet_old": 0.0
+    },
+    "weight_generation": {
+      "type": "imprinted"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ]
+    ],
+    "_logs": {
+      "scale": [
+        8.346577644348145,
+        11.714271545410156,
+        12.346787452697754
+      ]
+    }
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.906,
+        "00-01": 0.933,
+        "02-03": 0.769
+      },
+      "incremental_accuracy": 0.906,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.906,
+        "00-00": 0.962,
+        "01-01": 0.879,
+        "02-02": 0.769
+      },
+      "cord": 0.8701171875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.558,
+        "00-01": 0.311,
+        "02-03": 0.824,
+        "04-05": 0.762
+      },
+      "incremental_accuracy": 0.732,
+      "forgetting": -0.04874999999999996,
+      "accuracy_per_class": {
+        "total": 0.558,
+        "00-00": 0.137,
+        "01-01": 0.629,
+        "02-02": 0.369,
+        "03-03": 0.955,
+        "04-04": 0.762
+      },
+      "cord": 0.7177734375,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.321,
+      "new_accuracy": 0.939,
+      "avg_old_accuracy": 0.321,
+      "avg_new_accuracy": 0.939
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.731,
+        "00-01": 0.165,
+        "02-03": 0.17,
+        "04-05": 0.886,
+        "06-07": 0.986
+      },
+      "incremental_accuracy": 0.7316666666666666,
+      "forgetting": 0.06240000000000001,
+      "accuracy_per_class": {
+        "total": 0.731,
+        "00-00": 0.0,
+        "01-01": 0.466,
+        "02-02": 0.4,
+        "03-03": 0.103,
+        "04-04": 0.81,
+        "05-05": 0.957,
+        "06-06": 0.986
+      },
+      "cord": 0.68505859375,
+      "accuracy_top5": {
+        "total": 0.994
+      },
+      "incremental_accuracy_top5": 0.9979999999999999,
+      "old_accuracy": 0.188,
+      "new_accuracy": 0.985,
+      "avg_old_accuracy": 0.2545,
+      "avg_new_accuracy": 0.962
+    }
+  ]
+}

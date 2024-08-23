@@ -1,0 +1,192 @@
+{
+  "config": {
+    "model": "podnet",
+    "convnet": "resnet18",
+    "dropout": 0.0,
+    "herding": null,
+    "memory_size": 160,
+    "temperature": 1,
+    "fixed_memory": true,
+    "dataset": "colorectal",
+    "increment": 2,
+    "batch_size": 32,
+    "workers": 4,
+    "threads": 1,
+    "validation": 0.0,
+    "random_classes": false,
+    "max_task": null,
+    "onehot": false,
+    "initial_increment": 4,
+    "sampler": null,
+    "data_path": "/home/evelynyi/continual_learning/incremental_learning.pytorch/data/colorectal",
+    "lr": 0.1,
+    "weight_decay": 0.0005,
+    "scheduling": "cosine",
+    "lr_decay": 0.1,
+    "optimizer": "sgd",
+    "epochs": 100,
+    "label": "podnet_colorectal_4steps2",
+    "autolabel": false,
+    "seed": 1993,
+    "seed_range": null,
+    "options": [
+      "options/podnet/podnet_cnn_colorectal.yaml",
+      "options/data/colorectal_3orders.yaml"
+    ],
+    "save_model": "task",
+    "dump_predictions": false,
+    "logging": "info",
+    "resume": null,
+    "resume_first": false,
+    "recompute_meta": false,
+    "no_benchmark": false,
+    "detect_anomaly": false,
+    "eval_type": "cnn",
+    "convnet_config": {
+      "last_relu": true,
+      "pretrained": true,
+      "nf": 64,
+      "initial_kernel": 7
+    },
+    "classifier_config": {
+      "type": "cosine",
+      "proxy_per_class": 10,
+      "distance": "cosine"
+    },
+    "postprocessor_config": {
+      "type": "learned_scaling",
+      "initial_value": 1.0
+    },
+    "pod_flat": {
+      "scheduled_factor": 8.0
+    },
+    "pod_spatial": {
+      "scheduled_factor": 5.0,
+      "collapse_channels": "spatial"
+    },
+    "nca": {
+      "margin": 0.0,
+      "scale": 1.0,
+      "exclude_pos_denominator": true,
+      "hinge_proxynca": true
+    },
+    "groupwise_factors": {
+      "old_weights": 0.0,
+      "convnet": [
+        0.1,
+        0.01
+      ]
+    },
+    "finetuning_config": {
+      "sampling": "undersampling",
+      "tuning": "classifier",
+      "lr": 0.01,
+      "epochs": 20,
+      "scaling": null
+    },
+    "proxy_per_class": 1,
+    "weight_generation": {
+      "type": "imprinted",
+      "multi_class_diff": "kmeans"
+    },
+    "no_progressbar": true,
+    "classes_order": [
+      [
+        1,
+        5,
+        6,
+        0,
+        3,
+        2,
+        4,
+        7
+      ]
+    ],
+    "_logs": {}
+  },
+  "results": [
+    {
+      "task_id": 0,
+      "accuracy": {
+        "total": 0.998,
+        "00-01": 0.996,
+        "02-03": 1.0
+      },
+      "incremental_accuracy": 0.998,
+      "forgetting": 0.0,
+      "accuracy_per_class": {
+        "total": 0.998,
+        "00-00": 0.992,
+        "01-01": 1.0,
+        "02-02": 1.0,
+        "03-03": 1.0
+      },
+      "cord": 0.998046875,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0
+    },
+    {
+      "task_id": 1,
+      "accuracy": {
+        "total": 0.888,
+        "00-01": 0.848,
+        "02-03": 0.98,
+        "04-05": 0.836
+      },
+      "incremental_accuracy": 0.9430000000000001,
+      "forgetting": -0.33399999999999996,
+      "accuracy_per_class": {
+        "total": 0.888,
+        "00-00": 0.832,
+        "01-01": 0.864,
+        "02-02": 1.0,
+        "03-03": 0.96,
+        "04-04": 0.888,
+        "05-05": 0.784
+      },
+      "cord": 0.916015625,
+      "accuracy_top5": {
+        "total": 1.0
+      },
+      "incremental_accuracy_top5": 1.0,
+      "old_accuracy": 0.914,
+      "new_accuracy": 0.836,
+      "avg_old_accuracy": 0.914,
+      "avg_new_accuracy": 0.836
+    },
+    {
+      "task_id": 2,
+      "accuracy": {
+        "total": 0.869,
+        "00-01": 0.788,
+        "02-03": 0.9,
+        "04-05": 0.84,
+        "06-07": 0.948
+      },
+      "incremental_accuracy": 0.9183333333333333,
+      "forgetting": -0.21466666666666667,
+      "accuracy_per_class": {
+        "total": 0.869,
+        "00-00": 0.704,
+        "01-01": 0.872,
+        "02-02": 0.88,
+        "03-03": 0.92,
+        "04-04": 0.84,
+        "05-05": 0.84,
+        "06-06": 0.912,
+        "07-07": 0.984
+      },
+      "cord": 0.90576171875,
+      "accuracy_top5": {
+        "total": 0.998
+      },
+      "incremental_accuracy_top5": 0.9993333333333334,
+      "old_accuracy": 0.843,
+      "new_accuracy": 0.948,
+      "avg_old_accuracy": 0.8785000000000001,
+      "avg_new_accuracy": 0.8919999999999999
+    }
+  ]
+}
